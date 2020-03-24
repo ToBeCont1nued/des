@@ -1,8 +1,8 @@
 # des
 
 usage:
-由于每个分组密码的加密方式不一样，所以用法稍微有所不同
-ECB:
+  由于每个分组密码的加密方式不一样，所以用法稍微有所不同
+  ECB:
 ``` cpp
 ECB_encrypt(key, plain, size, cipher, DES_encrypt);
 ECB_decrypt(key, cipher, size, p, DES_decrypt);
