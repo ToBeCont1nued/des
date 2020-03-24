@@ -12,29 +12,30 @@ using std::endl;		using std::hex;
 using std::setw;		using std::setfill;
 using std::ifstream;
 
-char cipher[0x1000000];
-char p[0x1000000];
-
 int main(int argc, char **argv)
 {
 	size_t size;
-	const char *key = "\xe1\xe1\xe1\xe1\xf0\xf0\xf0\xf0";
-	const char *IV = "Le3tc0de";
+	const char *plain = "hello world";
+	const char *key = "12345678";
+	const char *IV = "87654321";
 
-	size = 0x100000;
+	size = strlen(plain);
+
+	char cipher[64];
 	memset(cipher, 'a', size);
 	OFB_encrypt(key, cipher, IV, size,
 		cipher, DES_encrypt);
-	/*for (size_t i = 0; i != size; ++i)
+	for (size_t i = 0; i != size; ++i)
 		cout << setw(2) << setfill('0') << hex << (uint32_t)(uint8_t)cipher[i];
-	cout << endl;*/
-	p[size] = 0;
+	cout << endl;
+	char p[64];
 	OFB_decrypt(key, cipher, IV, size,
 		p, DES_encrypt);
-	/*for (size_t i = 0; i != size; ++i)
+	p[size] = 0;
+	for (size_t i = 0; i != size; ++i)
 		cout << setw(2) << setfill('0') << hex << (uint32_t)(uint8_t)p[i];
 	cout << endl;
-	cout << p << endl;*/
+	cout << p << endl;
 
 	return 0;
 }
