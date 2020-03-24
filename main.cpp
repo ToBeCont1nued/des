@@ -23,7 +23,7 @@ int main(int argc, char **argv)
 
 	char cipher[64];
 	memset(cipher, 'a', size);
-	OFB_encrypt(key, cipher, IV, size,
+	OFB_encrypt(key, plain, IV, size,
 		cipher, DES_encrypt);
 	for (size_t i = 0; i != size; ++i)
 		cout << setw(2) << setfill('0') << hex << (uint32_t)(uint8_t)cipher[i];
